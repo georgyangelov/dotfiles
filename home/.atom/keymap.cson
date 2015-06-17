@@ -1,0 +1,45 @@
+'atom-workspace':
+  # Tab management
+  'alt-q': 'core:close'
+  'alt-[': 'pane:show-previous-item'
+  'alt-]': 'pane:show-next-item'
+  'alt-{': 'pane:move-item-left'
+  'alt-}': 'pane:move-item-right'
+
+  # Pane management
+  'alt-1': 'pane-manager:changeLayoutOne'
+  'alt-2': 'pane-manager:changeLayoutTwo'
+  'alt-3': 'pane-manager:changeLayoutSeven'
+  'alt-"': 'user:pane-tab-move-right'
+  'alt-:': 'user:pane-tab-move-left'
+  'alt-\'': 'window:focus-next-pane'
+  'alt-;': 'window:focus-previous-pane'
+
+'atom-workspace atom-text-editor:not([mini])':
+  # Cursor movements
+  'alt-left': 'editor:move-to-first-character-of-line'
+  'alt-right': 'editor:move-to-end-of-screen-line'
+  'ctrl-up': 'block-travel:move-up'
+  'ctrl-down': 'block-travel:move-down'
+
+  # Selection
+  'alt-shift-left': 'editor:select-to-first-character-of-line'
+  'alt-shift-right': 'editor:select-to-end-of-line'
+  'ctrl-shift-up': 'block-travel:select-up'
+  'ctrl-shift-down': 'block-travel:select-down'
+
+  # Scrolling
+  'alt-up': 'user:scroll-up'
+  'alt-down': 'user:scroll-down'
+
+  # Lines
+  'shift-alt-up': 'editor:move-line-up'
+  'shift-alt-down': 'editor:move-line-down'
+  'ctrl-delete': 'editor:delete-line'
+  'ctrl-backspace': 'editor:delete-line'
+
+  # Toggle plugin
+  'ctrl-,': 'toggle:visit'
+
+  # Toggle Quotes plugin
+  'ctrl-\'': 'toggle-quotes:toggle'
