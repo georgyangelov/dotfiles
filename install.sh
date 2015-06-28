@@ -3,13 +3,14 @@ DIR=$(dirname $0)
 windows() { [[ -n "$WINDIR" ]]; }
 
 for dir in $DIR/home/.*; do
-  dir_name=$(basename $dir)
+  dir_name=$(basename "$dir")
+  dir_path=$(cd $dir && pwd)
 
   if [ $dir_name != '.' ] && [ $dir_name != '..' ] && [ -d "$dir" ]; then
     if windows; then
       cp -rf "$dir" "$HOME/$dir_name"
     else
-      ln -i -s "$dir" "$HOME/$dir_name"
+      ln -i -s "$dir_path" "$HOME/$dir_name"
     fi
 
     init_script="$dir/install.sh"
