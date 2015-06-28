@@ -81,7 +81,11 @@ This will copy the files back to this repo (if on Windows) and run the package s
 - **ctrl-,**: Toggle word (true <-> false, and <-> or, etc.)
 - **ctrl-'**: Toggle quotes ("" <-> '')
 
+## Bash config
+
+Just look at the files in `home/.bash/`.
+
+
 ## TODO
 
-- Bash config and aliases
 - Vagrantfile and provision script

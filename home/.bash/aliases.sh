@@ -1,0 +1,56 @@
+alias grep="grep --color=auto"
+
+alias vi="vim"
+alias v="vim"
+alias g="git"
+
+alias c="clear"
+
+alias ls="ls -hp --color --group-directories-first"
+alias lsa="ls -hpa --color --group-directories-first"
+alias ll="ls -lah --color --group-directories-first"
+alias lsl="ll"
+
+alias s="sudo"
+
+alias aptsearch="sudo aptitude search"
+alias aptinstall="sudo aptitude install"
+alias aptremove="sudo aptitude remove"
+alias aptpurge="sudo aptitude purge"
+alias aptupdate="sudo aptitude update"
+alias aptupgrade="sudo aptitude upgrade"
+alias aptautoremove="sudo apt-get autoremove"
+
+alias gpull="git pull"
+alias gpullr="git pull --rebase"
+alias gpush="git push"
+alias gstash="git stash"
+alias gcommit="git commit"
+alias glog="git log"
+alias gs="git status"
+alias gstat="git status"
+alias gstatus="git status"
+alias gbranch="git branch"
+alias gc="git checkout"
+alias gcheckout="git checkout"
+alias grevert="git revert"
+alias greset="git reset"
+alias ga="git add"
+alias gadd="git add"
+alias grm="git rm"
+alias gd="git diff --patience"
+alias gdc="git diff --cached --patience"
+alias gdiff="git diff --patience"
+alias gdiffc="git diff --cached --patience"
+alias gdiffw="git diff -w --patience"
+alias gdiffm="git diff --patience --diff-filter=MTUXB"
+alias gdiffam="git diff --patience --diff-filter=AMTUXB"
+alias gshow="git show"
+alias gmerge="git merge"
+alias grebase="git rebase"
+alias gignore="git update-index --assume-unchanged"
+alias gnoignore="git update-index --no-assume-unchanged"
+
+# An "alert" alias for long running commands.
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
