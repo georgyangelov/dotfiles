@@ -22,33 +22,59 @@ alias aptupgrade="sudo aptitude upgrade"
 alias aptautoremove="sudo apt-get autoremove"
 
 alias gpull="git pull"
+__git_complete gpull _git_pull
+
 alias gpullr="git pull --rebase"
+__git_complete gpullr _git_pull
+
+alias gfetch="git fetch"
+__git_complete gfetch _git_fetch
+
 alias gpush="git push"
+__git_complete gpush _git_push
+
 alias gstash="git stash"
+__git_complete gstash _git_stash
+
 alias gcommit="git commit"
+__git_complete gcommit _git_commit
+
 alias gl="git log"
-alias glog="git log"
+__git_complete gl _git_log
+
 alias gs="git status"
 alias gstat="git status"
 alias gstatus="git status"
 alias gbranch="git branch"
+__git_complete gbranch _git_branch
+
 alias gc="git checkout"
-alias gcheckout="git checkout"
+__git_complete gc _git_checkout
+
 alias grevert="git revert"
-alias greset="git reset"
+__git_complete grevert _git_revert
+
 alias ga="git add"
-alias gadd="git add"
-alias grm="git rm"
+__git_complete ga _git_add
+
+alias gr="git reset"
+__git_complete gr _git_reset
+
 alias gd="git diff --patience"
+__git_complete gd _git_diff
+
 alias gdc="git diff --cached --patience"
-alias gdiff="git diff --patience"
-alias gdiffc="git diff --cached --patience"
-alias gdiffw="git diff -w --patience"
-alias gdiffm="git diff --patience --diff-filter=MTUXB"
-alias gdiffam="git diff --patience --diff-filter=AMTUXB"
+__git_complete gd _git_diff
+
 alias gshow="git show"
+__git_complete gshow _git_show
+
 alias gmerge="git merge"
+__git_complete gmerge _git_merge
+
 alias grebase="git rebase"
+__git_complete grebase _git_rebase
+
 alias gignore="git update-index --assume-unchanged"
 alias gnoignore="git update-index --no-assume-unchanged"
 

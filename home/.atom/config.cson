@@ -22,8 +22,7 @@
     excludeVcsIgnoredPaths: false
   editor:
     invisibles: {}
-    fontSize: 13
-    fontFamily: "Consolas"
+    fontSize: 12
     preferredLineLength: 100
     scrollPastEnd: true
     showIndentGuide: true
@@ -48,6 +47,29 @@
   "ruby-test": {}
   toggle: {}
   "toggle-quotes": {}
-  "one-light-ui": {}
+  "one-light-ui":
+    layoutMode: "Compact"
   "exception-reporting":
     userId: "e4755308-1c4a-7aa4-9240-793dee72c256"
+".basic.html.text":
+  editor:
+    preferredLineLength: 100
+    tabLength: 4
+".js.regexp.source":
+  editor:
+    preferredLineLength: 100
+".text.xml.xsl":
+  editor:
+    preferredLineLength: 100
+".css.source":
+  editor:
+    preferredLineLength: 100
+    tabLength: 4
+".js.source":
+  editor:
+    preferredLineLength: 100
+    tabLength: 4
+".text.xml":
+  editor:
+    preferredLineLength: 100
+    tabLength: 4
