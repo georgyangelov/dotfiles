@@ -52,7 +52,7 @@ render_prompt () {
   last_status $?
   git_prompt
 
-  PS1=' '$last_status_result'\[$green\]$(chomp_dir "$(pwd)" 30) '$git_prompt_result'\[$reset\]\$ '
+  PS1=' '$last_status_result'\[$green\]$(chomp_dir "$(pwd)" 30) '$git_prompt_result'\[$reset\]$ '
 }
 
 PROMPT_COMMAND=render_prompt

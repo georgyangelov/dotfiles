@@ -11,16 +11,16 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 # Setting history length
-export HISTCONTROL="ignoredups:erasedups"
-export HISTTIMEFORMAT="[%F %T] "
-export HISTSIZE=99999
-export HISTFILESIZE=$HISTSIZE;
+# export HISTCONTROL="ignoredups:erasedups"
+# export HISTTIMEFORMAT="[%F %T] "
+# export HISTSIZE=99999
+# export HISTFILESIZE=$HISTSIZE;
 
 # Make some commands not show up in history
-export HISTIGNORE="ls:pwd:exit:clear:date:* --help:history"
+# export HISTIGNORE="ls:pwd:exit:clear:date:* --help:history"
 
 # append to the history file, don't overwrite it
-shopt -s histappend
+# shopt -s histappend
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
@@ -33,16 +33,16 @@ shopt -s autocd
 
 # Check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+# shopt -s checkwinsize
 
 # Set user & root prompt
-function prompt_callback {
-    # After each command, append to the history file and reread it.
-    # Source: http://unix.stackexchange.com/a/1292
-    history -a
-    history -c
-    history -r
-}
+# function prompt_callback {
+#     # After each command, append to the history file and reread it.
+#     # Source: http://unix.stackexchange.com/a/1292
+#     history -a
+#     history -c
+#     history -r
+# }
 
 # Make vim the default editor
 export EDITOR="vim"

@@ -1,4 +1,10 @@
+alias ascii="figlet"
+alias matrix="cmatrix"
+
 alias grep="grep --color=auto"
+
+# Make cat display invisible characters (if any)
+alias cat="cat -v"
 
 alias vi="vim"
 alias v="vim"
@@ -6,32 +12,36 @@ alias g="git"
 
 alias c="clear"
 
-alias ls="ls -hp --color --group-directories-first"
-alias lsa="ls -hpa --color --group-directories-first"
-alias ll="ls -lah --color --group-directories-first"
+alias ls="ls -hp"
+alias lsa="ls -hpa"
+alias ll="ls -lah"
 alias lsl="ll"
 
 alias s="sudo"
 
-alias aptsearch="sudo aptitude search"
-alias aptinstall="sudo aptitude install"
-alias aptremove="sudo aptitude remove"
-alias aptpurge="sudo aptitude purge"
-alias aptupdate="sudo aptitude update"
-alias aptupgrade="sudo aptitude upgrade"
-alias aptautoremove="sudo apt-get autoremove"
+alias svc="brew services"
+
+alias be="bundle exec"
+alias abe="bundle exec"
 
 alias gpull="git pull"
 __git_complete gpull _git_pull
+__git_complete gpull _git_checkout
 
 alias gpullr="git pull --rebase"
 __git_complete gpullr _git_pull
+__git_complete gpullr _git_checkout
 
 alias gfetch="git fetch"
 __git_complete gfetch _git_fetch
 
 alias gpush="git push"
 __git_complete gpush _git_push
+__git_complete gpush _git_checkout
+
+alias gpushf="git push --force-with-lease"
+__git_complete gpushf _git_push
+__git_complete gpushf _git_checkout
 
 alias gstash="git stash"
 __git_complete gstash _git_stash
@@ -48,6 +58,9 @@ alias gstatus="git status"
 alias gbranch="git branch"
 __git_complete gbranch _git_branch
 
+alias gsetupstream="git branch --set-upstream-to"
+__git_complete gsetupstream _git_branch
+
 alias gc="git checkout"
 __git_complete gc _git_checkout
 
@@ -61,6 +74,9 @@ alias gr="git reset"
 __git_complete gr _git_reset
 
 alias gd="git diff --patience"
+__git_complete gd _git_diff
+
+alias gdf="git diff --patience --no-index"
 __git_complete gd _git_diff
 
 alias gdc="git diff --cached --patience"
