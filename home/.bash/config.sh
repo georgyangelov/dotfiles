@@ -31,6 +31,15 @@ shopt -s cdspell
 # CD without cd
 shopt -s autocd
 
+# Use `**` to match directories recursively
+shopt -s globstar
+
+# Includes filenames beginning with a `.` in the results of filename expansion
+shopt -s dotglob
+
+# Do not attempt to search the PATH for completions on an empty line
+shopt -s no_empty_cmd_completion
+
 # Check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 # shopt -s checkwinsize

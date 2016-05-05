@@ -3,6 +3,14 @@ alias matrix="cmatrix"
 
 alias grep="grep --color=auto"
 
+function http-server() {
+  if [[ $# == 1 ]]; then
+    python -m http.server "$1"
+  else
+    python -m http.server 8080
+  fi
+}
+
 # Make cat display invisible characters (if any)
 alias cat="cat -v"
 
@@ -21,8 +29,25 @@ alias s="sudo"
 
 alias svc="brew services"
 
-alias be="bundle exec"
-alias abe="bundle exec"
+function be() {
+  if [[ $@ == "rspecf" ]]; then
+    command bundle exec rspec --next-failure
+  elif [[ $@ == "rspecff" ]]; then
+    command bundle exec rspec --only-failures
+  else
+    command bundle exec $@
+  fi
+}
+
+function gyolo() {
+  if git diff-index --quiet --cached HEAD; then
+    echo "No staged changes"
+  else
+    CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
+
+    git commit --amend && git push --force-with-lease origin "$CURRENT_BRANCH"
+  fi
+}
 
 alias gpull="git pull"
 __git_complete gpull _git_pull
@@ -49,8 +74,33 @@ __git_complete gstash _git_stash
 alias gcommit="git commit"
 __git_complete gcommit _git_commit
 
-alias gl="git log"
+alias gcommita="git commit --amend"
+__git_complete gcommita _git_commit
+
+SHORT_LOG_FORMAT="--pretty=\"format:%Cblue%h %Cgreen%an %Creset%s\""
+
+# Default log
+alias gl="git log --graph $SHORT_LOG_FORMAT"
 __git_complete gl _git_log
+
+# Log in long form
+alias glf="git log --graph"
+__git_complete glf _git_log
+
+# Log all refs (all branches)
+alias gla="git log --graph --all $SHORT_LOG_FORMAT"
+__git_complete gla _git_log
+
+# Log changes in the current branch but not in master
+alias gll="git log --graph $SHORT_LOG_FORMAT ^master HEAD"
+__git_complete gll _git_log
+
+# Long form of `gll`
+alias gllf="git log --graph ^master HEAD"
+__git_complete gllf _git_log
+
+alias greflog="git log $SHORT_LOG_FORMAT --walk-reflogs"
+__git_complete greflog _git_log
 
 alias gs="git status"
 alias gstat="git status"
@@ -75,6 +125,9 @@ __git_complete gr _git_reset
 
 alias gd="git diff --patience"
 __git_complete gd _git_diff
+
+alias gdl="git diff --patience ^master HEAD"
+__git_complete gdl _git_diff
 
 alias gdf="git diff --patience --no-index"
 __git_complete gd _git_diff
