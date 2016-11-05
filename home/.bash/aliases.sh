@@ -25,17 +25,43 @@ alias lsa="ls -hpa"
 alias ll="ls -lah"
 alias lsl="ll"
 
+# Makes tab-width in less be 4
+alias less="less --tabs=4"
+
 alias s="sudo"
 
 alias svc="brew services"
 
 function be() {
   if [[ $@ == "rspecf" ]]; then
-    command bundle exec rspec --next-failure
+    be rspec --next-failure
   elif [[ $@ == "rspecff" ]]; then
-    command bundle exec rspec --only-failures
+    be rspec --only-failures
+  elif [[ $@ == "rspecc" ]]; then
+    modified_spec_files=$(git ls-files -m | grep _spec.rb | xargs)
+
+    be rspec $modified_spec_files
+  elif [[
+    $1 == "rake"  && -f bin/rake  ||
+    $1 == "rspec" && -f bin/rspec ||
+    $1 == "rails" && -f bin/rails
+  ]]; then
+    cmd=$1
+    shift
+
+    bin/$cmd $@
   else
     command bundle exec $@
+  fi
+}
+
+function bundle() {
+  if [[ -f bin/bundle ]]; then
+    shift
+
+    bin/bundle $@
+  else
+    command bundle $@
   fi
 }
 
@@ -77,10 +103,12 @@ __git_complete gcommit _git_commit
 alias gcommita="git commit --amend"
 __git_complete gcommita _git_commit
 
-SHORT_LOG_FORMAT="--pretty=\"format:%Cblue%h %Cgreen%an %Creset%s\""
+SHORT_LOG_FORMAT="--date=relative --pretty=\"format:%Cblue%h %x09 %C(Yellow)%<(14)%ad %Cgreen%<(16)%an %Creset%s\""
+GIT_DIFF_OPTIONS="--patience"
+GIT_DIFF_ENV="GIT_PAGER=\"less --tabs=10\""
 
 # Default log
-alias gl="git log --graph $SHORT_LOG_FORMAT"
+alias gl="$GIT_DIFF_ENV git log --graph $SHORT_LOG_FORMAT"
 __git_complete gl _git_log
 
 # Log in long form
@@ -88,16 +116,31 @@ alias glf="git log --graph"
 __git_complete glf _git_log
 
 # Log all refs (all branches)
-alias gla="git log --graph --all $SHORT_LOG_FORMAT"
+alias gla="$GIT_DIFF_ENV git log --graph --all $SHORT_LOG_FORMAT"
 __git_complete gla _git_log
 
 # Log changes in the current branch but not in master
-alias gll="git log --graph $SHORT_LOG_FORMAT ^master HEAD"
+alias gll="$GIT_DIFF_ENV git log --graph $SHORT_LOG_FORMAT ^master HEAD"
 __git_complete gll _git_log
 
 # Long form of `gll`
 alias gllf="git log --graph ^master HEAD"
 __git_complete gllf _git_log
+
+# Log changes in master, but not in the current branch
+alias glr="$GIT_DIFF_ENV git log --graph $SHORT_LOG_FORMAT ^HEAD master"
+__git_complete glr _git_log
+
+# Long form of `glr`
+alias glrf="git log --graph ^HEAD master"
+__git_complete glrf _git_log
+
+# Log unpushed changes
+function glp() {
+  CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
+
+  gl "origin/$CURRENT_BRANCH".."$CURRENT_BRANCH" $@
+}
 
 alias greflog="git log $SHORT_LOG_FORMAT --walk-reflogs"
 __git_complete greflog _git_log
@@ -123,17 +166,17 @@ __git_complete ga _git_add
 alias gr="git reset"
 __git_complete gr _git_reset
 
-alias gd="git diff --patience"
+alias gd="git diff $GIT_DIFF_OPTIONS"
 __git_complete gd _git_diff
 
-alias gdl="git diff --patience ^master HEAD"
+alias gdl="git diff $GIT_DIFF_OPTIONS master...HEAD"
 __git_complete gdl _git_diff
 
-alias gdf="git diff --patience --no-index"
-__git_complete gd _git_diff
+alias gdf="git diff $GIT_DIFF_OPTIONS --no-index"
+__git_complete gdf _git_diff
 
-alias gdc="git diff --cached --patience"
-__git_complete gd _git_diff
+alias gdc="git diff --cached $GIT_DIFF_OPTIONS"
+__git_complete gdc _git_diff
 
 alias gshow="git show"
 __git_complete gshow _git_show
