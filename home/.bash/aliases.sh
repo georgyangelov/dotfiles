@@ -25,10 +25,13 @@ alias lsa="ls -hpa"
 alias ll="ls -lah"
 alias lsl="ll"
 
+alias dc="docker-compose"
+
 # Makes tab-width in less be 4
 alias less="less --tabs=4"
 
 alias s="sudo"
+alias sv="sudo vim"
 
 alias svc="brew services"
 
