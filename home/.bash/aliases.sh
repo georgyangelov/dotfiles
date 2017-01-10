@@ -12,7 +12,7 @@ function http-server() {
 }
 
 # Make cat display invisible characters (if any)
-alias cat="cat -v"
+alias dog="cat -v"
 
 alias vi="vim"
 alias v="vim"
@@ -26,6 +26,7 @@ alias ll="ls -lah"
 alias lsl="ll"
 
 alias dc="docker-compose"
+alias d="docker"
 
 # Makes tab-width in less be 4
 alias less="less --tabs=4"
