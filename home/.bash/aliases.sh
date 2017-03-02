@@ -25,11 +25,11 @@ alias lsa="ls -hpa"
 alias ll="ls -lah"
 alias lsl="ll"
 
-alias dc="docker-compose"
 alias d="docker"
+alias dc="docker-compose"
 
-# Makes tab-width in less be 4
-alias less="less --tabs=4"
+# Makes tab-width in less be 4 and searches case-insensitive if they only contain lowercase letters
+alias less="less --tabs=4 -i"
 
 alias s="sudo"
 alias sv="sudo vim"
