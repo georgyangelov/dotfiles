@@ -49,20 +49,30 @@ last_status () {
   fi
 }
 
-set_host () {
+set_host_user () {
+  set_user
+
   if [[ $HOSTNAME != "SapphiraX.local" && $HOSTNAME != "storm" ]]; then
-    host='\[$cyan\]$HOSTNAME '
+    host_user='\[$cyan\]$HOSTNAME'$user
   else
-    host=''
+    host_user=$user
+  fi
+}
+
+set_user () {
+  if [[ $USER != 'stormbreaker' && $USER != 'gangelov' ]]; then
+    user='\[$cyan\]:$USER '
+  else
+    user=' '
   fi
 }
 
 render_prompt () {
   last_status $?
   git_prompt
-  set_host
+  set_host_user
 
-  PS1=' '$host$last_status_result'\[$green\]$(chomp_dir "$(pwd)" 30) '$git_prompt_result'\[$reset\]$ '
+  PS1=' '$host_user$last_status_result'\[$green\]$(chomp_dir "$(pwd)" 30) '$git_prompt_result'\[$reset\]$ '
 }
 
 PROMPT_COMMAND=render_prompt
