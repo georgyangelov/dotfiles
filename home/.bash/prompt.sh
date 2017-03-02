@@ -5,6 +5,7 @@ blueish=$(tput setf 0)
 red=$(tput setaf 1)
 bold=$(tput bold)
 reset=$(tput sgr0)
+cyan=$(tput setaf 6)
 
 # Shorten directory names if the path is too long
 # /this/is/a/really/long/path/to/a/directory -> /t/i/a/r/l/p/t/a/directory
@@ -48,11 +49,20 @@ last_status () {
   fi
 }
 
+set_host () {
+  if [[ $HOSTNAME != "SapphiraX.local" && $HOSTNAME != "storm" ]]; then
+    host='\[$cyan\]$HOSTNAME '
+  else
+    host=''
+  fi
+}
+
 render_prompt () {
   last_status $?
   git_prompt
+  set_host
 
-  PS1=' '$last_status_result'\[$green\]$(chomp_dir "$(pwd)" 30) '$git_prompt_result'\[$reset\]$ '
+  PS1=' '$host$last_status_result'\[$green\]$(chomp_dir "$(pwd)" 30) '$git_prompt_result'\[$reset\]$ '
 }
 
 PROMPT_COMMAND=render_prompt
