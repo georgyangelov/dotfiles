@@ -37,7 +37,9 @@ alias sv="sudo vim"
 alias svc="brew services"
 
 function be() {
-  if [[ $@ == "rspecf" ]]; then
+  if [[ $# == 0 ]]; then
+    command bundle
+  elif [[ $@ == "rspecf" ]]; then
     be rspec --next-failure
   elif [[ $@ == "rspecff" ]]; then
     be rspec --only-failures
@@ -69,13 +71,23 @@ function bundle() {
   fi
 }
 
+function git_current_branch() {
+  git rev-parse --abrev-ref HEAD
+}
+
 function gyolo() {
   if git diff-index --quiet --cached HEAD; then
     echo "No staged changes"
   else
-    CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
+    git commit --amend && git push --force-with-lease origin $(git_current_branch)
+  fi
+}
 
-    git commit --amend && git push --force-with-lease origin "$CURRENT_BRANCH"
+function gsetupstream() {
+  if [[ $# == 0  ]]; then
+    gsetupstream origin/$(git_current_branch)
+  else
+    git branch --set-upstream-to $@
   fi
 }
 
@@ -155,7 +167,7 @@ alias gstatus="git status"
 alias gbranch="git branch"
 __git_complete gbranch _git_branch
 
-alias gsetupstream="git branch --set-upstream-to"
+# alias gsetupstream="git branch --set-upstream-to"
 __git_complete gsetupstream _git_branch
 
 alias gc="git checkout"
