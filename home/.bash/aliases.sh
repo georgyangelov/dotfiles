@@ -63,8 +63,6 @@ function be() {
 
 function bundle() {
   if [[ -f bin/bundle ]]; then
-    shift
-
     bin/bundle $@
   else
     command bundle $@
