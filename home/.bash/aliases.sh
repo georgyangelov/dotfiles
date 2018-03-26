@@ -70,7 +70,7 @@ function bundle() {
 }
 
 function git_current_branch() {
-  git rev-parse --abrev-ref HEAD
+  git rev-parse --abbrev-ref HEAD
 }
 
 function gyolo() {
@@ -117,6 +117,9 @@ __git_complete gcommit _git_commit
 alias gcommita="git commit --amend"
 __git_complete gcommita _git_commit
 
+alias gupdatesubmodules="git submodule update --init --recursive"
+__git_complete gupdatesubmodules _git_submodule
+
 SHORT_LOG_FORMAT="--date=relative --pretty=\"format:%Cblue%h %x09 %C(Yellow)%<(14)%ad %Cgreen%<(16)%an %Creset%s\""
 GIT_DIFF_OPTIONS="--patience"
 GIT_DIFF_ENV="GIT_PAGER=\"less --tabs=10\""
@@ -148,6 +151,9 @@ __git_complete glr _git_log
 # Long form of `glr`
 alias glrf="git log --graph ^HEAD master"
 __git_complete glrf _git_log
+
+# Show recent branches
+alias grecent="git for-each-ref --sort=-committerdate refs/heads --format='%(color:blue)%(align:40,left)%(refname:short)%(end) %(color:Yellow)%(align:17,left)%(committerdate:relative)%(end) %(color:green)%(authorname)' --count=15"
 
 # Log unpushed changes
 function glp() {
