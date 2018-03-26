@@ -1,11 +1,13 @@
-# Some colors
-green=$(tput setaf 2)
-blue=$(tput setaf 4)
-blueish=$(tput setf 0)
-red=$(tput setaf 1)
-bold=$(tput bold)
-reset=$(tput sgr0)
-cyan=$(tput setaf 6)
+# Some colors, if in an interactive session
+if [[ $- == *i* ]]; then
+  green=$(tput setaf 2)
+  blue=$(tput setaf 4)
+  blueish=$(tput setf 0)
+  red=$(tput setaf 1)
+  bold=$(tput bold)
+  reset=$(tput sgr0)
+  cyan=$(tput setaf 6)
+fi
 
 # Shorten directory names if the path is too long
 # /this/is/a/really/long/path/to/a/directory -> /t/i/a/r/l/p/t/a/directory
