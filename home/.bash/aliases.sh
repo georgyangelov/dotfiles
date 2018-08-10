@@ -114,7 +114,7 @@ __git_complete gstash _git_stash
 alias gcommit="git commit"
 __git_complete gcommit _git_commit
 
-alias gcommita="git commit --amend"
+alias gcommita="git commit --amend --reset-author"
 __git_complete gcommita _git_commit
 
 alias gupdatesubmodules="git submodule update --init --recursive"
