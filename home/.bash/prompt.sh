@@ -54,7 +54,7 @@ last_status () {
 set_host_user () {
   set_user
 
-  if [[ $HOSTNAME != "SapphiraX.local" && $HOSTNAME != "SapphiraX.astea" && $HOSTNAME != "storm" ]]; then
+  if [[ $HOSTNAME != "SapphiraX.local" && $HOSTNAME != "SapphiraX.astea" && $HOSTNAME != "Sapphira.local" && $HOSTNAME != "Sapphira.astea" && $HOSTNAME != "storm" ]]; then
     host_user=' \[$cyan\]$HOSTNAME'$user
   else
     host_user=$user
